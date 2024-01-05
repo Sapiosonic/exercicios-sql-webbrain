@@ -19,11 +19,19 @@ INSERT INTO motos (nome_moto) VALUES ("Veículo 2");
 INSERT INTO motos (nome_moto) VALUES ("Veículo 4");
 INSERT INTO motos (nome_moto) VALUES ("Veículo 6");
 
-SELECT nome_carro AS carro FROM carros
-UNION
-SELECT nome_moto FROM motos
-ORDER BY carro;
+-- SELECT nome_carro AS carro FROM carros
+-- UNION
+-- SELECT nome_moto FROM motos
+-- ORDER BY carro;
 
+SELECT * FROM 
+(
+	(SELECT nome_carro AS veiculo FROM carros)
+	UNION ALL
+	(SELECT nome_moto AS veiculo FROM motos)
+) 
+AS veiculos
+ORDER BY veiculo;
 
 
 
